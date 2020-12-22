@@ -10,19 +10,27 @@ Course 2020-CE1003-B
 using namespace std;
 char* dict[99999];
 int n=0;
-void smallerthan(char* a,char* b){
+bool smallerthan(char* a,char* b){
 	int idx=0;
+	while(idx<10){
+		if(a[idx]<b[idx])
+			return true;
+		else if(a[idx]==b[idx])
+			idx++;
+		else
+			return false;
+	}
+	return false;
 }
 void msort(){
 	if(n==1)
 		return;
 	else{
-		int idx=n-2;
-		cout<<dict[n-1]<<" "<<dict[idx]<<endl;
-		while(){
-			cout<<dict[n-1]<<"<"<<dict[idx]<<endl;
-			swap(dict[n-1],dict[idx]);
-			idx--;
+		int idx=n-2,now=n-1;
+		while(idx>=0&&smallerthan(dict[now],dict[idx])){
+				swap(dict[now],dict[idx]);
+				idx--;
+				now--;
 		}
 	}
 	return;
